@@ -1,0 +1,1429 @@
+{
+  "contractName": "TokenVestingFactory",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "vesting",
+          "type": "address"
+        }
+      ],
+      "name": "Created",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipRenounced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "_start",
+          "type": "uint256"
+        },
+        {
+          "name": "_cliff",
+          "type": "uint256"
+        },
+        {
+          "name": "_duration",
+          "type": "uint256"
+        }
+      ],
+      "name": "create",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506117a1806100536000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100675780638c71ec161461007e5780638da5cb5b1461011f578063f2fde38b14610176575b600080fd5b34801561007357600080fd5b5061007c6101b9565b005b34801561008a57600080fd5b506100dd600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001909291905050506102bb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012b57600080fd5b506101346104be565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561018257600080fd5b506101b7600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104e7565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561021457600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000806000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031957600080fd5b858585856001610327610648565b808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018581526020018481526020018381526020018215151515815260200195505050505050604051809103906000f080158015610399573d6000803e3d6000fd5b5090508073ffffffffffffffffffffffffffffffffffffffff1663f2fde38b336040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561043757600080fd5b505af115801561044b573d6000803e3d6000fd5b505050507f1449abf21e49fd025f33495e77f7b1461caefdd3d4bb646424a3f445c4576a5b81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a180915050949350505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561054257600080fd5b61054b8161054e565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561058a57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b60405161111d80610659833901905600608060405234801561001057600080fd5b5060405160a08061111d8339810180604052810190808051906020019092919080519060200190929190805190602001909291908051906020019092919080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600073ffffffffffffffffffffffffffffffffffffffff168573ffffffffffffffffffffffffffffffffffffffff16141515156100d757600080fd5b8183111515156100e657600080fd5b84600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600560006101000a81548160ff02191690831515021790555081600481905550610168838561017f64010000000002610cd1179091906401000000009004565b6002819055508360038190555050505050506101a0565b600080828401905083811015151561019657600080fd5b8091505092915050565b610f6e806101af6000396000f3006080604052600436106100d0576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630fb5a6b4146100d557806313d033c0146101005780631726cbc81461012b5780631916558714610182578063384711cc146101c557806338af3eed1461021c578063715018a61461027357806374a8f1031461028a578063872a7810146102cd5780638da5cb5b146102fc5780639852595c14610353578063be9a6555146103aa578063f2fde38b146103d5578063fa01dc0614610418575b600080fd5b3480156100e157600080fd5b506100ea610473565b6040518082815260200191505060405180910390f35b34801561010c57600080fd5b50610115610479565b6040518082815260200191505060405180910390f35b34801561013757600080fd5b5061016c600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061047f565b6040518082815260200191505060405180910390f35b34801561018e57600080fd5b506101c3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104e2565b005b3480156101d157600080fd5b50610206600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061061b565b6040518082815260200191505060405180910390f35b34801561022857600080fd5b5061023161081f565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561027f57600080fd5b50610288610845565b005b34801561029657600080fd5b506102cb600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610947565b005b3480156102d957600080fd5b506102e2610bcf565b604051808215151515815260200191505060405180910390f35b34801561030857600080fd5b50610311610be2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561035f57600080fd5b50610394600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c0b565b6040518082815260200191505060405180910390f35b3480156103b657600080fd5b506103bf610c23565b6040518082815260200191505060405180910390f35b3480156103e157600080fd5b50610416600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c29565b005b34801561042457600080fd5b50610459600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c90565b604051808215151515815260200191505060405180910390f35b60045481565b60025481565b60006104db600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020546104cd8461061b565b610cb090919063ffffffff16565b9050919050565b60006104ed8261047f565b90506000811115156104fe57600080fd5b61055081600660008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054610cd190919063ffffffff16565b600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506105e0600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16828473ffffffffffffffffffffffffffffffffffffffff16610cf29092919063ffffffff16565b7ffb81f9b30d73d830c3544b34d827c08142579ee75710b490bab0b3995468c565816040518082815260200191505060405180910390a15050565b60008060008373ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156106bb57600080fd5b505af11580156106cf573d6000803e3d6000fd5b505050506040513d60208110156106e557600080fd5b8101908080519060200190929190505050915061074a600660008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205483610cd190919063ffffffff16565b905060025442101561075f5760009250610818565b610776600454600354610cd190919063ffffffff16565b421015806107cd5750600760008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff165b156107da57809250610818565b6108156004546108076107f860035442610cb090919063ffffffff16565b84610de090919063ffffffff16565b610e1e90919063ffffffff16565b92505b5050919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156108a057600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156109a757600080fd5b600560009054906101000a900460ff1615156109c257600080fd5b600760008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16151515610a1b57600080fd5b8373ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610ab657600080fd5b505af1158015610aca573d6000803e3d6000fd5b505050506040513d6020811015610ae057600080fd5b81019080805190602001909291905050509250610afc8461047f565b9150610b118284610cb090919063ffffffff16565b90506001600760008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550610b9d610b76610be2565b828673ffffffffffffffffffffffffffffffffffffffff16610cf29092919063ffffffff16565b7f44825a4b2df8acb19ce4e1afba9aa850c8b65cdb7942e2078f27d0b0960efee660405160405180910390a150505050565b600560009054906101000a900460ff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60066020528060005260406000206000915090505481565b60035481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610c8457600080fd5b610c8d81610e48565b50565b60076020528060005260406000206000915054906101000a900460ff1681565b600080838311151515610cc257600080fd5b82840390508091505092915050565b6000808284019050838110151515610ce857600080fd5b8091505092915050565b8273ffffffffffffffffffffffffffffffffffffffff1663a9059cbb83836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b158015610d9557600080fd5b505af1158015610da9573d6000803e3d6000fd5b505050506040513d6020811015610dbf57600080fd5b81019080805190602001909291905050501515610ddb57600080fd5b505050565b6000806000841415610df55760009150610e17565b8284029050828482811515610e0657fe5b04141515610e1357600080fd5b8091505b5092915050565b600080600083111515610e3057600080fd5b8284811515610e3b57fe5b0490508091505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610e8457600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058206f43a1fbb7be92f3cdb77a769d48ef9ef9602acb2bd9196378e7d9aef4f15e5e0029a165627a7a723058204fa2667f1605599826be54e20b4ccbb8983492e535ced5ce4f9bd0f469347b100029",
+  "deployedBytecode": "0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100675780638c71ec161461007e5780638da5cb5b1461011f578063f2fde38b14610176575b600080fd5b34801561007357600080fd5b5061007c6101b9565b005b34801561008a57600080fd5b506100dd600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001909291905050506102bb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012b57600080fd5b506101346104be565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561018257600080fd5b506101b7600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104e7565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561021457600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000806000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031957600080fd5b858585856001610327610648565b808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018581526020018481526020018381526020018215151515815260200195505050505050604051809103906000f080158015610399573d6000803e3d6000fd5b5090508073ffffffffffffffffffffffffffffffffffffffff1663f2fde38b336040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561043757600080fd5b505af115801561044b573d6000803e3d6000fd5b505050507f1449abf21e49fd025f33495e77f7b1461caefdd3d4bb646424a3f445c4576a5b81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a180915050949350505050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561054257600080fd5b61054b8161054e565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561058a57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b60405161111d80610659833901905600608060405234801561001057600080fd5b5060405160a08061111d8339810180604052810190808051906020019092919080519060200190929190805190602001909291908051906020019092919080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600073ffffffffffffffffffffffffffffffffffffffff168573ffffffffffffffffffffffffffffffffffffffff16141515156100d757600080fd5b8183111515156100e657600080fd5b84600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600560006101000a81548160ff02191690831515021790555081600481905550610168838561017f64010000000002610cd1179091906401000000009004565b6002819055508360038190555050505050506101a0565b600080828401905083811015151561019657600080fd5b8091505092915050565b610f6e806101af6000396000f3006080604052600436106100d0576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630fb5a6b4146100d557806313d033c0146101005780631726cbc81461012b5780631916558714610182578063384711cc146101c557806338af3eed1461021c578063715018a61461027357806374a8f1031461028a578063872a7810146102cd5780638da5cb5b146102fc5780639852595c14610353578063be9a6555146103aa578063f2fde38b146103d5578063fa01dc0614610418575b600080fd5b3480156100e157600080fd5b506100ea610473565b6040518082815260200191505060405180910390f35b34801561010c57600080fd5b50610115610479565b6040518082815260200191505060405180910390f35b34801561013757600080fd5b5061016c600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061047f565b6040518082815260200191505060405180910390f35b34801561018e57600080fd5b506101c3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104e2565b005b3480156101d157600080fd5b50610206600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061061b565b6040518082815260200191505060405180910390f35b34801561022857600080fd5b5061023161081f565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561027f57600080fd5b50610288610845565b005b34801561029657600080fd5b506102cb600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610947565b005b3480156102d957600080fd5b506102e2610bcf565b604051808215151515815260200191505060405180910390f35b34801561030857600080fd5b50610311610be2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561035f57600080fd5b50610394600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c0b565b6040518082815260200191505060405180910390f35b3480156103b657600080fd5b506103bf610c23565b6040518082815260200191505060405180910390f35b3480156103e157600080fd5b50610416600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c29565b005b34801561042457600080fd5b50610459600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c90565b604051808215151515815260200191505060405180910390f35b60045481565b60025481565b60006104db600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020546104cd8461061b565b610cb090919063ffffffff16565b9050919050565b60006104ed8261047f565b90506000811115156104fe57600080fd5b61055081600660008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054610cd190919063ffffffff16565b600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506105e0600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16828473ffffffffffffffffffffffffffffffffffffffff16610cf29092919063ffffffff16565b7ffb81f9b30d73d830c3544b34d827c08142579ee75710b490bab0b3995468c565816040518082815260200191505060405180910390a15050565b60008060008373ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156106bb57600080fd5b505af11580156106cf573d6000803e3d6000fd5b505050506040513d60208110156106e557600080fd5b8101908080519060200190929190505050915061074a600660008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205483610cd190919063ffffffff16565b905060025442101561075f5760009250610818565b610776600454600354610cd190919063ffffffff16565b421015806107cd5750600760008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff165b156107da57809250610818565b6108156004546108076107f860035442610cb090919063ffffffff16565b84610de090919063ffffffff16565b610e1e90919063ffffffff16565b92505b5050919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156108a057600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482060405160405180910390a260008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156109a757600080fd5b600560009054906101000a900460ff1615156109c257600080fd5b600760008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16151515610a1b57600080fd5b8373ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610ab657600080fd5b505af1158015610aca573d6000803e3d6000fd5b505050506040513d6020811015610ae057600080fd5b81019080805190602001909291905050509250610afc8461047f565b9150610b118284610cb090919063ffffffff16565b90506001600760008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550610b9d610b76610be2565b828673ffffffffffffffffffffffffffffffffffffffff16610cf29092919063ffffffff16565b7f44825a4b2df8acb19ce4e1afba9aa850c8b65cdb7942e2078f27d0b0960efee660405160405180910390a150505050565b600560009054906101000a900460ff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60066020528060005260406000206000915090505481565b60035481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610c8457600080fd5b610c8d81610e48565b50565b60076020528060005260406000206000915054906101000a900460ff1681565b600080838311151515610cc257600080fd5b82840390508091505092915050565b6000808284019050838110151515610ce857600080fd5b8091505092915050565b8273ffffffffffffffffffffffffffffffffffffffff1663a9059cbb83836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b158015610d9557600080fd5b505af1158015610da9573d6000803e3d6000fd5b505050506040513d6020811015610dbf57600080fd5b81019080805190602001909291905050501515610ddb57600080fd5b505050565b6000806000841415610df55760009150610e17565b8284029050828482811515610e0657fe5b04141515610e1357600080fd5b8091505b5092915050565b600080600083111515610e3057600080fd5b8284811515610e3b57fe5b0490508091505092915050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610e8457600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058206f43a1fbb7be92f3cdb77a769d48ef9ef9602acb2bd9196378e7d9aef4f15e5e0029a165627a7a723058204fa2667f1605599826be54e20b4ccbb8983492e535ced5ce4f9bd0f469347b100029",
+  "sourceMap": "92:498:16:-;;;578:10:7;569:6;;:19;;;;;;;;;;;;;;;;;;92:498:16;;;;;;",
+  "deployedSourceMap": "92:498:16:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1130:113:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1130:113:7;;;;;;180:408:16;;8:9:-1;5:2;;;30:1;27;20:12;5:2;180:408:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;648:70:7;;8:9:-1;5:2;;;30:1;27;20:12;5:2;648:70:7;;;;;;;;;;;;;;;;;;;;;;;;;;;1405:103;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1405:103:7;;;;;;;;;;;;;;;;;;;;;;;;;;;;1130:113;847:6;;;;;;;;;;;833:20;;:10;:20;;;825:29;;;;;;;;1206:6;;;;;;;;;;;1187:26;;;;;;;;;;;;1236:1;1219:6;;:19;;;;;;;;;;;;;;;;;;1130:113::o;180:408:16:-;297:12;321:20;847:6:7;;;;;;;;;;;833:20;;:10;:20;;;825:29;;;;;;;;374:12:16;400:6;420;440:9;463:4;344:133;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;344:133:16;321:156;;488:7;:25;;;514:10;488:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;488:37:16;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;488:37:16;;;;541:16;549:7;541:16;;;;;;;;;;;;;;;;;;;;;;574:7;567:14;;180:408;;;;;;;:::o;648:70:7:-;685:7;707:6;;;;;;;;;;;700:13;;648:70;:::o;1405:103::-;847:6;;;;;;;;;;;833:20;;:10;:20;;;825:29;;;;;;;;1474;1493:9;1474:18;:29::i;:::-;1405:103;:::o;1643:173::-;1734:1;1713:23;;:9;:23;;;;1705:32;;;;;;;;1777:9;1748:39;;1769:6;;;;;;;;;;;1748:39;;;;;;;;;;;;1802:9;1793:6;;:18;;;;;;;;;;;;;;;;;;1643:173;:::o;92:498:16:-;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.21;\n\nimport '../ownership/Ownable.sol';\nimport './TokenVesting.sol';\n\n\ncontract TokenVestingFactory is Ownable {\n    event Created(TokenVesting vesting);\n\n    function create( address _beneficiary, uint256 _start, uint256 _cliff, uint256 _duration ) onlyOwner public returns (TokenVesting) {\n        TokenVesting vesting = new TokenVesting(\n            _beneficiary,\n            _start,\n            _cliff,\n            _duration,\n            true\n        );\n\n        vesting.transferOwnership(msg.sender);\n\n        emit Created(vesting);\n        return vesting;\n    }\n}",
+  "sourcePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/vesting/VestingFactory.sol",
+  "ast": {
+    "absolutePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/vesting/VestingFactory.sol",
+    "exportedSymbols": {
+      "TokenVestingFactory": [
+        7814
+      ]
+    },
+    "id": 7815,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7765,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".21"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "absolutePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/ownership/Ownable.sol",
+        "file": "../ownership/Ownable.sol",
+        "id": 7766,
+        "nodeType": "ImportDirective",
+        "scope": 7815,
+        "sourceUnit": 6642,
+        "src": "26:34:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/vesting/TokenVesting.sol",
+        "file": "./TokenVesting.sol",
+        "id": 7767,
+        "nodeType": "ImportDirective",
+        "scope": 7815,
+        "sourceUnit": 7764,
+        "src": "61:28:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 7768,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6641,
+              "src": "124:7:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$6641",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 7769,
+            "nodeType": "InheritanceSpecifier",
+            "src": "124:7:16"
+          }
+        ],
+        "contractDependencies": [
+          6641,
+          7763
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 7814,
+        "linearizedBaseContracts": [
+          7814,
+          6641
+        ],
+        "name": "TokenVestingFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 7773,
+            "name": "Created",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7772,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7771,
+                  "indexed": false,
+                  "name": "vesting",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7773,
+                  "src": "152:20:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                    "typeString": "contract TokenVesting"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7770,
+                    "name": "TokenVesting",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7763,
+                    "src": "152:12:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "151:22:16"
+            },
+            "src": "138:36:16"
+          },
+          {
+            "body": {
+              "id": 7812,
+              "nodeType": "Block",
+              "src": "311:277:16",
+              "statements": [
+                {
+                  "assignments": [
+                    7789
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 7789,
+                      "name": "vesting",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 7813,
+                      "src": "321:20:16",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                        "typeString": "contract TokenVesting"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 7788,
+                        "name": "TokenVesting",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7763,
+                        "src": "321:12:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 7798,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7792,
+                        "name": "_beneficiary",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7775,
+                        "src": "374:12:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7793,
+                        "name": "_start",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7777,
+                        "src": "400:6:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7794,
+                        "name": "_cliff",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7779,
+                        "src": "420:6:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7795,
+                        "name": "_duration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7781,
+                        "src": "440:9:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "74727565",
+                        "id": 7796,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "463:4:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 7791,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "344:16:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_bool_$returns$_t_contract$_TokenVesting_$7763_$",
+                        "typeString": "function (address,uint256,uint256,uint256,bool) returns (contract TokenVesting)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 7790,
+                        "name": "TokenVesting",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7763,
+                        "src": "348:12:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      }
+                    },
+                    "id": 7797,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "344:133:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "321:156:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7802,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7829,
+                          "src": "514:3:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 7803,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "514:10:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 7799,
+                        "name": "vesting",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7789,
+                        "src": "488:7:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      },
+                      "id": 7801,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferOwnership",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6617,
+                      "src": "488:25:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
+                      }
+                    },
+                    "id": 7804,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "488:37:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 7805,
+                  "nodeType": "ExpressionStatement",
+                  "src": "488:37:16"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7807,
+                        "name": "vesting",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7789,
+                        "src": "549:7:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      ],
+                      "id": 7806,
+                      "name": "Created",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7773,
+                      "src": "541:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_contract$_TokenVesting_$7763_$returns$__$",
+                        "typeString": "function (contract TokenVesting)"
+                      }
+                    },
+                    "id": 7808,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "541:16:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 7809,
+                  "nodeType": "EmitStatement",
+                  "src": "536:21:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 7810,
+                    "name": "vesting",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 7789,
+                    "src": "574:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "functionReturnParameters": 7787,
+                  "id": 7811,
+                  "nodeType": "Return",
+                  "src": "567:14:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7813,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 7784,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 7783,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6589,
+                  "src": "271:9:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "271:9:16"
+              }
+            ],
+            "name": "create",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7775,
+                  "name": "_beneficiary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "197:20:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7774,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "197:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7777,
+                  "name": "_start",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "219:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7776,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "219:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7779,
+                  "name": "_cliff",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "235:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7778,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "235:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7781,
+                  "name": "_duration",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "251:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7780,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "251:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "195:75:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7786,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "297:12:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                    "typeString": "contract TokenVesting"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7785,
+                    "name": "TokenVesting",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7763,
+                    "src": "297:12:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "296:14:16"
+            },
+            "scope": 7814,
+            "src": "180:408:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7815,
+        "src": "92:498:16"
+      }
+    ],
+    "src": "0:590:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/vesting/VestingFactory.sol",
+    "exportedSymbols": {
+      "TokenVestingFactory": [
+        7814
+      ]
+    },
+    "id": 7815,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7765,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".21"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "absolutePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/ownership/Ownable.sol",
+        "file": "../ownership/Ownable.sol",
+        "id": 7766,
+        "nodeType": "ImportDirective",
+        "scope": 7815,
+        "sourceUnit": 6642,
+        "src": "26:34:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/arikdonovan/Desktop/Smart-Contracts/contracts/vesting/TokenVesting.sol",
+        "file": "./TokenVesting.sol",
+        "id": 7767,
+        "nodeType": "ImportDirective",
+        "scope": 7815,
+        "sourceUnit": 7764,
+        "src": "61:28:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 7768,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6641,
+              "src": "124:7:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$6641",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 7769,
+            "nodeType": "InheritanceSpecifier",
+            "src": "124:7:16"
+          }
+        ],
+        "contractDependencies": [
+          6641,
+          7763
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 7814,
+        "linearizedBaseContracts": [
+          7814,
+          6641
+        ],
+        "name": "TokenVestingFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 7773,
+            "name": "Created",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7772,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7771,
+                  "indexed": false,
+                  "name": "vesting",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7773,
+                  "src": "152:20:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                    "typeString": "contract TokenVesting"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7770,
+                    "name": "TokenVesting",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7763,
+                    "src": "152:12:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "151:22:16"
+            },
+            "src": "138:36:16"
+          },
+          {
+            "body": {
+              "id": 7812,
+              "nodeType": "Block",
+              "src": "311:277:16",
+              "statements": [
+                {
+                  "assignments": [
+                    7789
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 7789,
+                      "name": "vesting",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 7813,
+                      "src": "321:20:16",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                        "typeString": "contract TokenVesting"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 7788,
+                        "name": "TokenVesting",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7763,
+                        "src": "321:12:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 7798,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7792,
+                        "name": "_beneficiary",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7775,
+                        "src": "374:12:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7793,
+                        "name": "_start",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7777,
+                        "src": "400:6:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7794,
+                        "name": "_cliff",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7779,
+                        "src": "420:6:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 7795,
+                        "name": "_duration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7781,
+                        "src": "440:9:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "74727565",
+                        "id": 7796,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "bool",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "463:4:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "value": "true"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 7791,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "344:16:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_bool_$returns$_t_contract$_TokenVesting_$7763_$",
+                        "typeString": "function (address,uint256,uint256,uint256,bool) returns (contract TokenVesting)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 7790,
+                        "name": "TokenVesting",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7763,
+                        "src": "348:12:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      }
+                    },
+                    "id": 7797,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "344:133:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "321:156:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 7802,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7829,
+                          "src": "514:3:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 7803,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "514:10:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 7799,
+                        "name": "vesting",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7789,
+                        "src": "488:7:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      },
+                      "id": 7801,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferOwnership",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6617,
+                      "src": "488:25:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
+                      }
+                    },
+                    "id": 7804,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "488:37:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 7805,
+                  "nodeType": "ExpressionStatement",
+                  "src": "488:37:16"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 7807,
+                        "name": "vesting",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7789,
+                        "src": "549:7:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                          "typeString": "contract TokenVesting"
+                        }
+                      ],
+                      "id": 7806,
+                      "name": "Created",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7773,
+                      "src": "541:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_contract$_TokenVesting_$7763_$returns$__$",
+                        "typeString": "function (contract TokenVesting)"
+                      }
+                    },
+                    "id": 7808,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "541:16:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 7809,
+                  "nodeType": "EmitStatement",
+                  "src": "536:21:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 7810,
+                    "name": "vesting",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 7789,
+                    "src": "574:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "functionReturnParameters": 7787,
+                  "id": 7811,
+                  "nodeType": "Return",
+                  "src": "567:14:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 7813,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 7784,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 7783,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6589,
+                  "src": "271:9:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "271:9:16"
+              }
+            ],
+            "name": "create",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7775,
+                  "name": "_beneficiary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "197:20:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7774,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "197:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7777,
+                  "name": "_start",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "219:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7776,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "219:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7779,
+                  "name": "_cliff",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "235:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7778,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "235:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7781,
+                  "name": "_duration",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "251:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7780,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "251:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "195:75:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7786,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7813,
+                  "src": "297:12:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                    "typeString": "contract TokenVesting"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7785,
+                    "name": "TokenVesting",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7763,
+                    "src": "297:12:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TokenVesting_$7763",
+                      "typeString": "contract TokenVesting"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "296:14:16"
+            },
+            "scope": 7814,
+            "src": "180:408:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7815,
+        "src": "92:498:16"
+      }
+    ],
+    "src": "0:590:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-09-06T20:40:49.208Z"
+}

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./oraclize-api/contracts/oraclizeAPI.sol";
+import "./api/contracts/usingOraclize.sol";
 
 /**
  * @title EthPriceOraclize

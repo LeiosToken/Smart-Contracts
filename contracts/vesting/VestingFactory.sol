@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import '../ownershop/Ownable.sol';
+import '../ownership/Ownable.sol';
 import './TokenVesting.sol';
 
 
